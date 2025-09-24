@@ -5,7 +5,7 @@ function Country() {
   const [country, setCountry] = useState([]);
   const [search, setSearch] = useState("");
 
-
+//initally fetch all country details and store in state variable
   async function fetchCountry() {
     try {
       const res = await fetch(
@@ -21,11 +21,11 @@ function Country() {
   useEffect(() => {
     fetchCountry();
   }, []);
-
+//to sort 
   const sortedCountries = [...country].sort((a, b) =>
     a.name?.common?.localeCompare(b.name?.common || "") || 0
   );
-
+//to search by name
   const filteredCountries = sortedCountries.filter((c) =>
     (c.name?.common || "").toLowerCase().includes(search.toLowerCase())
   );

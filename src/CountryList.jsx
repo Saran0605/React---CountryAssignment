@@ -1,8 +1,9 @@
 import Flag from "./assets/flag.jpeg"
 import { useNavigate } from "react-router-dom";
+//Card component for every country
 function CountryList({flags,name,currency,timezones}){
     const navigate = useNavigate();
-
+//View map functionality
     function openMap(name){
         console.log("map");
         const url = `https://www.google.com/maps/search/?api=1&query=${name}`;

@@ -7,7 +7,7 @@ function Detail() {
   const [detail, setDetail] = useState(null);
   const [borders, setBorders] = useState([]);
   const [flags, setFlags] = useState([]);
-
+//function to fetch country detail
   async function fetchCountryByName() {
     try {
       const res = await fetch(
@@ -20,7 +20,7 @@ function Detail() {
       console.error("Error fetching country:", err);
     }
   }
-
+//function to fetch flags of border countries
   async function fetchFlags(borderCodes) {
     if (!borderCodes.length) return; 
     try {
@@ -34,11 +34,11 @@ function Detail() {
       console.error("Error fetching border flags:", err);
     }
   }
-
+//will be run at inital to fetch country detail
   useEffect(() => {
     fetchCountryByName();
   }, []);
-
+//when state variable borders is updated , the function will fetch out neighbour countries
   useEffect(() => {
     if (borders.length > 0) {
       fetchFlags(borders);
