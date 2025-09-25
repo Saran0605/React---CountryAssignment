@@ -18,7 +18,7 @@ function CountryList({flags,name,currency,timezones}){
               <p>Currency : {currency}</p>
               <p>Current date and time : {timezones}</p>
               <button type="button" onClick={()=>openMap(name)}  className="btn map">Show Map</button>
-              <button type="button" onClick={()=>navigate("/detail",{state:{cname:name}})} className="btn detail">Detail</button>
+              <button type="button" onClick={()=>navigate(`/detail/${encodeURIComponent(name)}`)} className="btn detail">Detail</button>
             </div>
         </div>
         </div>

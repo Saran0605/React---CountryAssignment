@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function Detail() {
-  const location = useLocation();
-  const name = location.state?.cname || "null";
+  
   const [detail, setDetail] = useState(null);
   const [borders, setBorders] = useState([]);
   const [flags, setFlags] = useState([]);
+    const { name } = useParams();  
+      const decoded = decodeURIComponent(name);  
+
+
 //function to fetch country detail
   async function fetchCountryByName() {
     try {
       const res = await fetch(
-        `https://restcountries.com/v3.1/name/${name}?fullText=true`
+        `https://restcountries.com/v3.1/name/${decoded}?fullText=true`
       );
       const data = await res.json();
       setDetail(data[0]);
